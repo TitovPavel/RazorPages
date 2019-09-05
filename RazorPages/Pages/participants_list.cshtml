@@ -1,0 +1,13 @@
+﻿@page
+@model RazorPages.Pages.participantsModel
+
+
+<ol>
+    @{ foreach (var item in Model.participantsView.ListParticipants)
+        {
+            <li>@item</li>
+        }
+       }
+</ol>
+
+

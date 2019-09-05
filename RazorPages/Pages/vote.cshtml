@@ -1,0 +1,14 @@
+﻿@page
+@model RazorPages.Pages.voteModel
+@{
+    ViewData["Title"] = "vote";
+}
+
+<form method="POST">
+    Имя:<br>
+    <input type="text" name="name"><br>
+    Иду:<br>
+    <input type="checkbox" name="attend"><br><br>
+    <input type="submit" value="Голосовать">
+</form>
+

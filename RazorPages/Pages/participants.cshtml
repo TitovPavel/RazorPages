@@ -1,0 +1,43 @@
+﻿@page
+@model RazorPages.Pages.participantsModel
+@{
+    ViewData["Title"] = "participants";
+}
+
+<ol>
+    @{ foreach (var item in Model.participantsView.ListParticipants)
+        {
+            <li>@item</li>
+        }
+    }
+</ol>
+
+<a href="index">Домой</a>
+<br>
+<br>
+<div>Name:</div>
+<input type="Text" name="nameUser" id="nameUser">
+<div>Message:</div>
+<input type="Text" name="message" id="message">
+<input type="submit" value="Отправить" id="send">
+
+
+<script>
+    var socket = new WebSocket("ws://localhost:57732/ws");
+
+    document.getElementById('send').onclick = function () {
+        var nameUser = document.getElementById('nameUser').value;
+        var message = document.getElementById('message').value;
+        var SendMessage = "" + nameUser + ": " + message;
+        socket.send(SendMessage);
+        document.getElementById('message').value = "";
+    };
+
+    socket.onmessage = function (event) {
+        var message = document.createElement("div");
+        message.innerHTML = event.data;
+        document.body.appendChild(message);;
+    };
+
+</script>
+

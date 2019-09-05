@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<p>Всем привет. Приходите не вечеринку</p>
+<a href="vote">Проголосовать.</a>
+<br>
+<a href="participants">Список участников</a>
+<br>
+<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', 'participants_list', false);
+		xhr.send();
+		if (xhr.status == 200) {
+		document.write(xhr.responseText);
+	}
+</script>
